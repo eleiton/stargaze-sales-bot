@@ -36,7 +36,7 @@ async def process_event_loop():
                 with open(TIMESTAMP_FILE, 'r') as file:
                     timestamp_str = file.read()
                     last_time_stamp = datetime.fromisoformat(timestamp_str)
-            logging.info(f"Searching for new sales.  Last sale was on: {last_time_stamp}")
+            print(f"Searching for new sales.  Last sale was on: {last_time_stamp}")
 
             # Define the query parameters and prepare the query
             if not COLLECTION_ADDRESS:
@@ -81,5 +81,4 @@ async def process_event_loop():
         await asyncio.sleep(CHECK_FREQUENCY_SECONDS)
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO)
     asyncio.run(main())

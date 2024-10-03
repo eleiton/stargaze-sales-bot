@@ -38,7 +38,11 @@ async def create_discord_embed(activity: dict):
         embed.add_field(name="Traits", value=text, inline=False)
 
     embed.set_image(url=thumbnail)
-    embed.timestamp = datetime.now(timezone.utc)
+    activity_date = activity.get('date')
+    if activity_date:
+        activity_timestamp = datetime.strptime(activity_date, '%Y-%m-%dT%H:%M:%S.%fZ')
+        activity_timestamp = activity_timestamp.replace(tzinfo=timezone.utc)
+        embed.timestamp = activity_timestamp
     embed.set_footer(text="@LibreBots",
                      icon_url="https://pbs.twimg.com/profile_images/1841774136009297920/rNoWg-9A_400x400.jpg")
     return embed
