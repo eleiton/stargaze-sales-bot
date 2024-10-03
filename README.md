@@ -6,7 +6,7 @@ This is a free and open-source software that enables you to monitor NFT sales on
 
 Join for Free:
 
-For NFT project founders, moderators, and creators, we invite you to deploy this application on your own servers at no cost. Simply follow these below:
+For NFT project founders, moderators, and creators, we invite you to deploy this application on your own servers at no cost. Simply follow the installation steps below.
 
 Collaborate with Us:
 
@@ -47,7 +47,12 @@ $ export set COLLECTION_ADDRESS=<YOUR_STARS_ADDRESS> #example stars123abc
 $ export set DISCORD_WEBHOOK=<WEBHOOK_URL> #example https://discord.com/api/webhooks/123/ABC
 ````
 
-### How to deploy in production
+### Run the application
+```bash
+$ python3 main.py
+````
+
+## Deploying in production
 
 Here are some options where you can deploy this bot, in no particular order:
 1. [Koyeb](https://www.koyeb.com/)
