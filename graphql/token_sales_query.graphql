@@ -1,0 +1,28 @@
+query ExampleQuery($filterByCollectionAddrs: [String!], $sortBy: TokenSaleSort, $filterByDateRange: DateRange, $limit: Int) {
+    tokenSales(filterByCollectionAddrs: $filterByCollectionAddrs, sortBy: $sortBy, filterByDateRange: $filterByDateRange, limit: $limit) {
+        tokenSales {
+            price
+            priceUsd
+            sellerAddr
+            token {
+                tokenId
+                name
+                media {
+                    visualAssets {
+                        md {
+                            url
+                        }
+                    }
+                }
+                rarityOrder
+                traits {
+                    value
+                    name
+                }
+            }
+            buyerAddr
+            date
+        }
+    }
+}
+

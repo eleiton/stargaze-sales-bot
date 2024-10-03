@@ -6,16 +6,15 @@ from constants import DISCORD_EMBED_COLOR, STARGAZE_ICON_URL, STARGAZE_NFT_URL, 
 
 async def create_discord_embed(activity: dict):
     token = activity.get('token', {})
-    price = activity.get('price', {})
     name = token.get('name')
     rarity = token.get('rarityOrder')
     traits = token.get('traits', {})
-    amount_micro = int(price.get('amount', 0))
-    amount = amount_micro * 1e-6
-    amount_usd = price.get('amountUsd')
+    price_micro = int(activity.get('price', 0))
+    price = price_micro * 1e-6
+    price_usd = activity.get('priceUsd')
     token_id = token.get('tokenId')
     thumbnail = token.get('media', {}).get('visualAssets', {}).get('md', {}).get('url')
-    currency = price.get('symbol')
+    currency = '$STARS'
     nft_url = await get_token_url(COLLECTION_ADDRESS, token_id)
 
     embed = discord.Embed(title=name,
@@ -25,9 +24,9 @@ async def create_discord_embed(activity: dict):
     embed.set_author(name="Sold on Stargaze", icon_url=STARGAZE_ICON_URL)
     if rarity:
         embed.add_field(name="Rarity", value="```" + str(rarity) + "```", inline=True)
-    formatted_value = "{:,}".format(int(amount))
+    formatted_value = "{:,}".format(int(price))
     embed.add_field(name="Price", value="```" + formatted_value + " " + currency + "```", inline=True)
-    embed.add_field(name="USD Price", value=f"```${round(amount_usd)} USD```", inline=True)
+    embed.add_field(name="USD Price", value=f"```${round(price_usd)} USD```", inline=True)
 
     # Handle optional attributes data
     text = ""

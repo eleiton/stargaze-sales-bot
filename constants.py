@@ -11,4 +11,7 @@ STARGAZE_ICON_URL = os.getenv('STARGAZE_ICON_URL',
 STARGAZE_NFT_URL = os.getenv('STARGAZE_NFT_URL', 'https://www.stargaze.zone/m/{collection_address}/{token_id}')
 PAGINATION_LIMIT = int(os.getenv('PAGINATION_LIMIT', 25))
 DISCORD_EMBED_COLOR = int(os.getenv('DISCORD_EMBED_COLOR', 0xe170a4))
-COLLECTION_ACTIVITY = os.getenv('COLLECTION_ACTIVITY', 'SALE')
+CHECK_FREQUENCY_SECONDS = int(os.getenv('CHECK_FREQUENCY', 300))
+
+# Application constants
+TIMESTAMP_FILE = 'timestamp.txt'
