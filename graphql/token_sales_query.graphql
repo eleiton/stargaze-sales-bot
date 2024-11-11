@@ -2,6 +2,7 @@ query ExampleQuery($filterByCollectionAddrs: [String!], $sortBy: TokenSaleSort, 
     tokenSales(filterByCollectionAddrs: $filterByCollectionAddrs, sortBy: $sortBy, filterByDateRange: $filterByDateRange, limit: $limit) {
         tokenSales {
             price
+            saleDenomSymbol
             priceUsd
             sellerAddr
             token {

@@ -14,7 +14,7 @@ async def create_discord_embed(activity: dict):
     price_usd = activity.get('priceUsd')
     token_id = token.get('tokenId')
     thumbnail = token.get('media', {}).get('visualAssets', {}).get('md', {}).get('url')
-    currency = '$STARS'
+    currency = activity.get('saleDenomSymbol')
     nft_url = await get_token_url(COLLECTION_ADDRESS, token_id)
 
     embed = discord.Embed(title=name,
